@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Musting</string>
+    <string name="app_name">Yunance</string>
+    <string name="on_board_activity_title">OnBoardActivity</string>
+    <string name="yunance">Yunance</string>
 </resources>
