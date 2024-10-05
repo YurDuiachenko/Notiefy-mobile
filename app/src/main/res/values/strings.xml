@@ -2,4 +2,7 @@
     <string name="app_name">Yunance</string>
     <string name="on_board_activity_title">OnBoardActivity</string>
     <string name="yunance">Yunance</string>
+    <string name="log_in_btn">LOG IN</string>
+    <string name="pass_input_ttl">Password</string>
+    <string name="email_input_ttl">Email</string>
 </resources>
