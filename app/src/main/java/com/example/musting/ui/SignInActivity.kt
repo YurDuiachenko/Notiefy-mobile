@@ -23,6 +23,9 @@ class SignInActivity : ComponentActivity() {
         val emailInput: EditText = findViewById(R.id.emailInput)
         val passInput: EditText = findViewById(R.id.passInput)
         val logInBtn: Button = findViewById(R.id.logInBtn)
+        val signUpBtn: Button = findViewById(R.id.signUpBtn)
+
+        setDefaultInputValues(emailInput, passInput)
 
         logInBtn.setOnClickListener {
             val email = emailInput.text.toString()
@@ -30,6 +33,16 @@ class SignInActivity : ComponentActivity() {
                 warnUser(logInBtn)
             else if (email == "d.yurok22@mail.ru")
                 navigateToHomeActivity()
+        }
+        signUpBtn.setOnClickListener {
+            navigateToSignUpActivity()
+        }
+    }
+
+    private fun setDefaultInputValues(emailInput: EditText, passInput: EditText) {
+        intent.getStringExtra("userData")?.split("\n")?.let {
+            emailInput.hint = it[0]
+            passInput.hint = it[1]
         }
     }
 
@@ -40,6 +53,11 @@ class SignInActivity : ComponentActivity() {
 
     private fun navigateToHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToSignUpActivity() {
+        val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
     }
 

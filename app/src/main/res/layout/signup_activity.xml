@@ -36,20 +36,20 @@
         app:layout_constraintVertical_bias="0.151" />
 
     <TextView
-        android:id="@+id/emailInputTitle"
+        android:id="@+id/nameInputTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:fontFamily="@font/montserrat_extralight"
-        android:text="@string/email_input_ttl"
+        android:text="@string/name_input_ttl"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/emailInput"
+        app:layout_constraintBottom_toTopOf="@+id/nameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="@+id/emailInput" />
+        app:layout_constraintStart_toStartOf="@+id/nameInput" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/nameInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
@@ -70,20 +70,20 @@
         android:importantForAutofill="no" />
 
     <TextView
-        android:id="@+id/passInputTitle"
+        android:id="@+id/emailInputTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:fontFamily="@font/montserrat_extralight"
-        android:text="@string/pass_input_ttl"
+        android:text="@string/email_input_ttl"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/passInput"
+        app:layout_constraintBottom_toTopOf="@+id/emailInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="@+id/emailInput" />
+        app:layout_constraintStart_toStartOf="@+id/nameInput" />
 
     <EditText
-        android:id="@+id/passInput"
+        android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
@@ -103,34 +103,46 @@
         app:layout_constraintTop_toBottomOf="@+id/appTitle"
         android:importantForAutofill="no" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/logInBtn"
+    <TextView
+        android:id="@+id/passInputTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_extralight"
+        android:text="@string/pass_input_ttl"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/passInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="@+id/passInput" />
+
+    <EditText
+        android:id="@+id/passInput"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="236dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_edit_text"
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
-        android:gravity="center"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:text="@string/log_in_btn"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passInput" />
+        app:layout_constraintTop_toBottomOf="@+id/appTitle" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signUpBtn"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_button"
         android:ems="10"

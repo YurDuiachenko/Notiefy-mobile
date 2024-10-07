@@ -5,4 +5,6 @@
     <string name="log_in_btn">LOG IN</string>
     <string name="pass_input_ttl">Password</string>
     <string name="email_input_ttl">Email</string>
+    <string name="sign_up_btn">SIGN UP</string>
+    <string name="name_input_ttl">Name</string>
 </resources>
