@@ -1,4 +1,4 @@
-package com.example.musting.ui
+package com.example.musting.ui.stateholders
 
 import android.view.View
 import android.widget.TextView

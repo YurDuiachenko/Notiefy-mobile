@@ -3,14 +3,21 @@ package com.example.musting.ui
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
 import com.example.musting.R
 
 class SignInActivity : ComponentActivity() {
+
+    companion object {
+        private const val TAG = "SignInActivity"
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i(TAG, "onCreate called")
         setContentView(R.layout.signin_activity)
 
         val emailInput: EditText = findViewById(R.id.emailInput)
@@ -38,5 +45,30 @@ class SignInActivity : ComponentActivity() {
 
     private fun isValidEmail(email: String): Boolean {
         return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$".toRegex())
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG, "onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "onDestroy called")
     }
 }

@@ -1,4 +1,4 @@
-package com.example.musting.ui
+package com.example.musting.ui.stateholders
 
 data class Current(
     val shortName: String,
