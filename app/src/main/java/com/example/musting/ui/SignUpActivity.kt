@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
 import com.example.musting.R
+import com.example.musting.ui.stateholders.User
 
 class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,13 +19,15 @@ class SignUpActivity : ComponentActivity() {
         val signUpBtn: Button = findViewById(R.id.signUpBtn)
 
         signUpBtn.setOnClickListener {
-            navigateToSignInActivity("${emailInput.text}\n${passInput.text}")
+            val bundle = Bundle()
+            bundle.putSerializable("user", User(emailInput.text.toString(), passInput.text.toString()))
+            navigateToSignInActivity(bundle)
         }
     }
 
-    private fun navigateToSignInActivity(bundle: String) {
+    private fun navigateToSignInActivity(bundle: Bundle) {
         val intent = Intent(this, SignInActivity::class.java)
-        intent.putExtra("userData", bundle)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 }

@@ -8,13 +8,14 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
 import com.example.musting.R
+import com.example.musting.ui.stateholders.User
 
 class SignInActivity : ComponentActivity() {
 
     companion object {
         private const val TAG = "SignInActivity"
     }
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate called")
@@ -40,9 +41,15 @@ class SignInActivity : ComponentActivity() {
     }
 
     private fun setDefaultInputValues(emailInput: EditText, passInput: EditText) {
-        intent.getStringExtra("userData")?.split("\n")?.let {
-            emailInput.hint = it[0]
-            passInput.hint = it[1]
+        val intent = intent;
+        if (intent != null) {
+            val extras = intent.extras;
+            if (extras != null) {
+                with(extras.getSerializable("user") as User) {
+                    emailInput.setText(email)
+                    passInput.setText(pass)
+                }
+            }
         }
     }
 
