@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.fir.declarations.builder.buildScript
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")

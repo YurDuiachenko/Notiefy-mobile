@@ -2,23 +2,37 @@ package com.example.musting.ui.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.musting.R
+import com.example.musting.databinding.FragmentSigninBinding
 import com.example.musting.ui.MainActivity
 
 class SignInFragment : Fragment(R.layout.fragment_signin) {
+    private var _binding: FragmentSigninBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSigninBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailInput: EditText = view.findViewById(R.id.emailInput)
-        val passInput: EditText = view.findViewById(R.id.passInput)
-        val logInBtn: Button = view.findViewById(R.id.logInBtn)
-        val signUpBtn: Button = view.findViewById(R.id.signUpBtn)
+        val emailInput = binding.emailInput
+        val passInput = binding.passInput
+        val logInBtn = binding.logInBtn
+        val signUpBtn = binding.signUpBtn
 
         setDefaultInputValues(emailInput, passInput)
 
@@ -52,5 +66,10 @@ class SignInFragment : Fragment(R.layout.fragment_signin) {
 
     private fun isValidEmail(email: String): Boolean {
         return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$".toRegex())
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
