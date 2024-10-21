@@ -6,11 +6,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.musting.R
 import com.example.musting.ui.MainActivity
-import com.example.musting.ui.stateholders.User
 
 class SignInFragment : Fragment(R.layout.fragment_signin) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -26,22 +27,21 @@ class SignInFragment : Fragment(R.layout.fragment_signin) {
             if (!isValidEmail(email) || passInput.text.isBlank()) {
                 warnUser(logInBtn)
             } else if (email == "d.yurok22@mail.ru") {
-                (activity as MainActivity).navigateToHome()
+                (activity as MainActivity).navigateSignInToHome()
             }
         }
 
         signUpBtn.setOnClickListener {
-            (activity as MainActivity).navigateToSignUp()
+            (activity as MainActivity).navigateSignInToSignUp()
         }
     }
 
     private fun setDefaultInputValues(emailInput: EditText, passInput: EditText) {
-        arguments?.let {
-            val user = it.getSerializable("user") as? User
-            user?.let {
-                emailInput.setText(user.email)
-                passInput.setText(user.pass)
-            }
+        val args: SignInFragmentArgs by navArgs()
+        if (args.user != null) {
+            val user = args.user
+            emailInput.setText(user?.email)
+            passInput.setText(user?.pass)
         }
     }
 

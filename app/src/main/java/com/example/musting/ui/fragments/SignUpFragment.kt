@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.musting.R
-import com.example.musting.ui.MainActivity
 import com.example.musting.ui.stateholders.User
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
@@ -20,13 +19,13 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
         val signUpBtn: Button = view.findViewById(R.id.signUpBtn)
 
         signUpBtn.setOnClickListener {
-            val bundle = bundleOf(
-                "user" to User(
-                    emailInput.text.toString(),
-                    passInput.text.toString()
-                )
+            val user = User(
+                emailInput.text.toString(),
+                passInput.text.toString()
             )
-            (activity as MainActivity).navigateToSignIn(bundle)
+
+            val action = SignUpFragmentDirections.actionSignupFragmentToSignInFragment(user)
+            findNavController().navigate(action)
         }
     }
 }

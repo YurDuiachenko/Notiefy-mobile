@@ -12,7 +12,7 @@ class OnboardFragment : Fragment(R.layout.fragment_onboard) {
 
         val rootView: View = view.findViewById(R.id.root)
         rootView.setOnClickListener {
-            (activity as MainActivity).navigateToSignIn()
+            (activity as MainActivity).navigateOnboardToSignIn()
         }
     }
 }
