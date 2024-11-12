@@ -14,15 +14,14 @@ import com.example.musting.databinding.FragmentSigninBinding
 import com.example.musting.ui.MainActivity
 
 class SignInFragment : Fragment(R.layout.fragment_signin) {
-    private var _binding: FragmentSigninBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSigninBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSigninBinding.inflate(inflater, container, false)
+        binding = FragmentSigninBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -66,10 +65,5 @@ class SignInFragment : Fragment(R.layout.fragment_signin) {
 
     private fun isValidEmail(email: String): Boolean {
         return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$".toRegex())
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

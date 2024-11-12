@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musting.databinding.CurrentsItemLayoutBinding
-import com.example.musting.ui.model.Current
+import com.example.musting.ui.model.Currency
 
-class CurrentsViewAdapter(private val data: List<Current>) : RecyclerView.Adapter<CurrentsViewHolder>() {
+class CurrentsViewAdapter(private val data: List<Currency>) : RecyclerView.Adapter<CurrentsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrentsViewHolder {
         val binding = CurrentsItemLayoutBinding.inflate(

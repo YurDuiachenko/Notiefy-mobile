@@ -13,15 +13,15 @@ import com.example.musting.databinding.FragmentSignupBinding
 import com.example.musting.ui.model.User
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
-    private var _binding: FragmentSignupBinding? = null
-    private val binding get() = _binding!!
+
+    private lateinit var binding: FragmentSignupBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSignupBinding.inflate(inflater, container, false)
+        binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,10 +42,5 @@ class SignUpFragment : Fragment(R.layout.fragment_signup) {
             val action = SignUpFragmentDirections.actionSignupFragmentToSignInFragment(user)
             findNavController().navigate(action)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

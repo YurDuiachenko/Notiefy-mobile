@@ -1,6 +1,6 @@
 package com.example.musting.ui.model
 
-data class Current(
+data class Currency(
     val shortName: String,
     val fullName: String,
     val cost: Double,

@@ -2,7 +2,7 @@ package com.example.musting.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CurrentBinance(
+data class CurrencyInfo(
     @SerializedName("symbol")
     val symbol: String,
 
