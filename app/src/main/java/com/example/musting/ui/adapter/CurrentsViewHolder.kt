@@ -1,4 +1,4 @@
-package com.example.musting.ui.stateholders
+package com.example.musting.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musting.databinding.CurrentsItemLayoutBinding

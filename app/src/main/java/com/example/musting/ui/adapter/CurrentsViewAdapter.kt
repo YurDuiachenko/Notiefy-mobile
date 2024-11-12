@@ -1,4 +1,4 @@
-package com.example.musting.ui.stateholders
+package com.example.musting.ui.adapter
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musting.databinding.CurrentsItemLayoutBinding
+import com.example.musting.ui.model.Current
 
 class CurrentsViewAdapter(private val data: List<Current>) : RecyclerView.Adapter<CurrentsViewHolder>() {
 

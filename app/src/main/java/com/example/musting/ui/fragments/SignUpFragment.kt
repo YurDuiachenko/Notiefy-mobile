@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.musting.R
 import com.example.musting.databinding.FragmentSignupBinding
-import com.example.musting.ui.stateholders.User
+import com.example.musting.ui.model.User
 
 class SignUpFragment : Fragment(R.layout.fragment_signup) {
     private var _binding: FragmentSignupBinding? = null

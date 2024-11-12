@@ -1,4 +1,4 @@
-package com.example.musting.ui.stateholders
+package com.example.musting.ui.model
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -19,7 +19,7 @@
         tools:layout="@layout/fragment_signin">
         <argument
             android:name="user"
-            app:argType="com.example.musting.ui.stateholders.User"
+            app:argType="com.example.musting.ui.model.User"
             android:defaultValue="@null"
             app:nullable="true"/>
         <action
@@ -39,7 +39,7 @@
             app:destination="@id/signInFragment" >
             <argument
                 android:name="user"
-                app:argType="com.example.musting.ui.stateholders.User" />
+                app:argType="com.example.musting.ui.model.User" />
         </action>
     </fragment>
 
