@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.fir.declarations.builder.buildScript
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -57,8 +55,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    // gson
     implementation("com.google.code.gson:gson:2.10")
+    // store
+    implementation("androidx.preference:preference:1.2.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    // async
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     // test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

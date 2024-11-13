@@ -8,17 +8,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musting.data.model.CurrencyPrice
-import com.example.musting.data.model.CurrencyInfo
 import com.example.musting.data.api.RetrofitClient
+import com.example.musting.data.model.CurrencyInfo
+import com.example.musting.data.model.CurrencyPrice
 import com.example.musting.data.repository.CurrencyRepository
 import com.example.musting.databinding.FragmentHomeBinding
-import com.example.musting.ui.model.Currency
+import com.example.musting.ui.MainActivity
 import com.example.musting.ui.adapter.CurrentsViewAdapter
+import com.example.musting.ui.model.Currency
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.RuntimeException
 import kotlin.math.round
 
 class HomeFragment : Fragment() {
@@ -48,6 +48,10 @@ class HomeFragment : Fragment() {
         binding.currents.layoutManager = LinearLayoutManager(context)
         adapter = CurrentsViewAdapter(data)
         binding.currents.adapter = adapter
+
+        binding.stngBtn.setOnClickListener{
+            (activity as MainActivity).navigateHomeToSettings()
+        }
 
         binding.currents.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
