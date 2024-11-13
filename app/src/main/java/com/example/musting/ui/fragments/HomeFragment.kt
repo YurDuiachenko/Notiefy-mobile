@@ -1,11 +1,14 @@
 package com.example.musting.ui.fragments
 
+import com.example.musting.data.store.FileStorage
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musting.data.api.RetrofitClient
@@ -16,6 +19,10 @@ import com.example.musting.databinding.FragmentHomeBinding
 import com.example.musting.ui.MainActivity
 import com.example.musting.ui.adapter.CurrentsViewAdapter
 import com.example.musting.ui.model.Currency
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +35,8 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: CurrentsViewAdapter
     private val data: MutableList<Currency> = mutableListOf()
 
-    private var repository = CurrencyRepository(RetrofitClient.instance)
+    private val repository: CurrencyRepository = CurrencyRepository(RetrofitClient.instance)
+    private val fileStorage: FileStorage by lazy { FileStorage(requireContext()) }
 
     private var isLoading = false
     private var currentPage = 0
@@ -49,7 +57,7 @@ class HomeFragment : Fragment() {
         adapter = CurrentsViewAdapter(data)
         binding.currents.adapter = adapter
 
-        binding.stngBtn.setOnClickListener{
+        binding.stngBtn.setOnClickListener {
             (activity as MainActivity).navigateHomeToSettings()
         }
 
@@ -84,6 +92,10 @@ class HomeFragment : Fragment() {
                         filterCurrenciesAndTakePage(currencyPrices)
                             .forEach { fetchCurrencyData(it) }
                     }
+                }
+
+                saveCurrencyToFile(data) { result ->
+                    handleSavinFile(result)
                 }
 
                 isLoading = false
@@ -132,8 +144,28 @@ class HomeFragment : Fragment() {
         )
     }
 
+    private fun saveCurrencyToFile(data: List<Currency>, onResult: (Boolean) -> Unit) {
+        lifecycleScope.launch {
+            var isSaved = false
+            withContext(Dispatchers.IO) {
+
+                isSaved = fileStorage.writeFile(
+                    fileStorage.publicFile(Environment.DIRECTORY_DOCUMENTS, "currencies.txt"),
+                    data.map { Gson().toJson(it) }
+                )
+            }
+
+            onResult(isSaved)
+        }
+    }
+
     private fun showErrorDataLoadingToast() {
         Toast.makeText(context, "Error while loading data", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun handleSavinFile(isSaved: Boolean) {
+        if (isSaved) Toast.makeText(context, "File saved", Toast.LENGTH_SHORT).show()
+        else Toast.makeText(context, "Error saving file", Toast.LENGTH_SHORT).show()
     }
 }
 
