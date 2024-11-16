@@ -227,15 +227,6 @@ class HomeFragment : Fragment() {
 
             withContext(Dispatchers.IO) {
                 repository.insertAll(characterEntities)
-
-                val savedCharacters = repository.getAll()
-
-                savedCharacters.collect { characters ->
-                    characters.forEach {
-                        Log.d("SQLite", "Saved character: ${it.shortName}")
-                    }
-
-                }
             }
         }
     }
