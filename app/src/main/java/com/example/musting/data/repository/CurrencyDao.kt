@@ -13,11 +13,10 @@ interface CurrencyDao {
     suspend fun insertAll(characters: List<CurrencyEntity>)
 
     @Query("SELECT * FROM currency")
-    fun getAllCharacters(): Flow<List<CurrencyEntity>>
-
+    fun getAll(): Flow<List<CurrencyEntity>>
 
     @Query("SELECT * FROM currency WHERE id = :id")
-    suspend fun getCharacterById(id: Int): CurrencyEntity?
+    suspend fun getById(id: Int): CurrencyEntity?
 
     @Update
     suspend fun update(character: CurrencyEntity)

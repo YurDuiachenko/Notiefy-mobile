@@ -20,24 +20,12 @@ class CurrencyRepository(
         return api.getCurrentBySymbol24hr(symbol)
     }
 
-    suspend fun insert(character: CurrencyEntity) {
-        dao.insert(character)
-    }
-
     suspend fun insertAll(characters: List<CurrencyEntity>) {
         dao.insertAll(characters)
     }
 
     fun getAll(): Flow<List<CurrencyEntity>> {
-        return dao.getAllCharacters()
-    }
-
-    suspend fun update(character: CurrencyEntity) {
-        dao.update(character)
-    }
-
-    suspend fun delete(character: CurrencyEntity) {
-        dao.delete(character)
+        return dao.getAll()
     }
 
     suspend fun deleteAll() {
