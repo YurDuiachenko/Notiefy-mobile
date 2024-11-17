@@ -223,10 +223,10 @@ class HomeFragment : Fragment() {
     private fun saveCurrencyToDatabase(data: List<Currency>) {
         Log.d("MY-TAG", "Saving to database")
         lifecycleScope.launch {
-            val characterEntities = data.map { mapToCurrencyEntity(it) }
+            val dataToSave = data.map { mapToCurrencyEntity(it) }
 
             withContext(Dispatchers.IO) {
-                repository.insertAll(characterEntities)
+                repository.insertAll(dataToSave)
             }
         }
     }
